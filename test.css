@@ -1,0 +1,27 @@
+.container{
+    flex: 1;
+}
+
+.task{
+    margin-top: 100px;
+    width: 100%;
+    align-items: stretch;
+    height: 150px;
+    background-color: #FCC822;
+
+}
+
+.answers{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+.answer{
+    width: 100px;
+    height: 50px;
+    background-color: #FCC822;
+    color: white;
+}
+
+/* Доделать эту страницу */

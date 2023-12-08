@@ -1,3 +1,9 @@
+/* @font-face {
+    font-family: 'Poppins';
+    src: local('Poppins'), url('fonts/Poppins/Poppins-Regular.woff') format('woff'),
+    url('fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+} */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -17,6 +23,7 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    font-family: 'Poppins', 'Roboto', sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -37,10 +44,13 @@ q:before, q:after {
     content: '';
     content: none;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+
 
 body{
     margin: 0 auto;
@@ -67,7 +77,7 @@ body{
 }
 
 .head_btn:hover{
-    box-shadow: 0px 7px 5px -2px #fcc9225e;
+    box-shadow: 2px 5px 4px -2px #fcc9225e;
 }
 
 .head_btn:active{
@@ -84,6 +94,9 @@ body{
 
 .left{
     flex: 1;
+    margin-top: 230px;
+    display: flex;
+    flex-direction: column;
 }
 
 .right{
@@ -94,4 +107,58 @@ body{
     width: 100%;
 }
 
+.text{
+    font-weight: bolder;
+    font-size: 60px;
+
+}
+.small{
+    display: inline-flex;
+    margin-top: 50px;
+    align-items: center;
+}
+.stick{
+    width: 2px;
+    height: 35px;
+    background-color: #5e5e5e;
+    margin-right: 15px;
+}
+.small_txt{
+    font-size: 18px;
+    color: #5e5e5e;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+}
+
+.start{
+    width: 130px;
+    height: 35px;
+    background-color: #FCC822;
+    color: white;
+    border: 1px solid #FCC822;
+    font-size: 16px;
+    text-align: center;
+    line-height: 35px;
+    margin-top: 40px;
+    text-decoration: none;
+    
+
+}
+
+.start:hover{
+    box-shadow: 2px 3px 10px #a7a7a7a6;
+}
+
+.start:active{
+    width: 125px;
+    height: 32px;
+    font-size: 12px;
+    margin-left: 3px;
+}
+
+.vector{
+    width: 250px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
 /* главную страницу и все картинки, статья бэм */
