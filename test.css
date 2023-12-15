@@ -2,12 +2,45 @@
     flex: 1;
 }
 
+
+.nums{
+    width: 450px;  
+    margin: 0 auto; 
+    display: flex;
+    justify-content: space-between;
+}
+
+.nums::before{
+    content: "";
+    width: 450px;
+    height: 3px;
+    background-color: #D1D1D1;
+    position: absolute;
+    transform: translateY(10px);
+    z-index: -1;
+}
+
+.num{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: #333333;
+    background-color:#D1D1D1 ;
+    border: 3px solid #BDBDBD;
+    text-align: center;
+    line-height: 20px;
+    color: #33333350;
+}
+
 .task{
     margin-top: 100px;
     width: 100%;
     align-items: stretch;
-    height: 150px;
+    height: 200px;
     background-color: #FCC822;
+    color: white;
+    text-align: center;
+    line-height: 200px;
 
 }
 
@@ -18,10 +51,72 @@
 }
 
 .answer{
-    width: 100px;
-    height: 50px;
+    width: 150px;
+    height: 70px;
+    background-color: #D1D1D1;
+    color: #333333;
+    text-align: center;
+    line-height: 70px;
+}
+
+.answer:hover{
+    background-color: #ffdd6c;
+    color: white;
+}
+
+.answer:active{
+    background-color: #ffb429;
+}
+
+input[type="radio"]:checked+.answer{
+    background-color: #FCC822;
+}
+
+input[type="radio"]{
+    display: none;
+}
+
+.bottom{
+    margin-top: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.last{
+    width: 150px;
+    height: 35px;
+    background-color: #D1D1D1;
+    color: #333333;
+    text-align: center;
+    line-height: 35px;
+}
+
+.last:hover{
     background-color: #FCC822;
     color: white;
 }
 
-/* Доделать эту страницу */
+.next{
+    width: 150px;
+    height: 35px;
+    background-color: #D1D1D1;
+    color: #333333;
+    text-align: center;
+    line-height: 35px;
+}
+
+.next:hover{
+    background-color: #FCC822;
+    color: white;
+}
+
+.pass{
+    color:  #FCC822;
+    position: absolute;
+    right: 50px;
+}
+
+
+/* закрасить 1 часть num active (figma) */
