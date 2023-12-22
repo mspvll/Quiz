@@ -8,6 +8,7 @@
     margin: 0 auto; 
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 .nums::before{
@@ -20,27 +21,52 @@
     z-index: -1;
 }
 
+.progress{
+    height: 3px;
+    width: 15%;
+    background-color: #FCC822;
+    position: absolute;
+    transform: translateY(10px);
+    z-index: -1;
+    
+}
+
 .num{
     width: 20px;
     height: 20px;
     border-radius: 50%;
     color: #333333;
     background-color:#D1D1D1 ;
-    border: 3px solid #BDBDBD;
+    border: 4px solid #BDBDBD;
     text-align: center;
     line-height: 20px;
     color: #33333350;
 }
 
+.active{
+    border: 4px solid #FCC822;
+    background-color: #fff;
+    color: #333333;
+}
+
 .task{
     margin-top: 100px;
-    width: 100%;
+    width: 100vw;
     align-items: stretch;
-    height: 200px;
+    min-height: 200px;
     background-color: #FCC822;
     color: white;
     text-align: center;
-    line-height: 200px;
+    /* line-height: 200px; */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+
 
 }
 
@@ -51,12 +77,15 @@
 }
 
 .answer{
-    width: 150px;
-    height: 70px;
+    min-width: 150px;
+    min-height: 80px;
     background-color: #D1D1D1;
     color: #333333;
     text-align: center;
-    line-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
 }
 
 .answer:hover{
@@ -76,7 +105,7 @@ input[type="radio"]{
     display: none;
 }
 
-.bottom{
+.bottoms{
     margin-top: 250px;
     display: flex;
     flex-direction: row;
@@ -84,30 +113,18 @@ input[type="radio"]{
     align-items: center;
 }
 
-.last{
+.btn{
     width: 150px;
     height: 35px;
     background-color: #D1D1D1;
     color: #333333;
     text-align: center;
     line-height: 35px;
+    position: relative;
 }
 
-.last:hover{
-    background-color: #FCC822;
-    color: white;
-}
 
-.next{
-    width: 150px;
-    height: 35px;
-    background-color: #D1D1D1;
-    color: #333333;
-    text-align: center;
-    line-height: 35px;
-}
-
-.next:hover{
+.btn:hover{
     background-color: #FCC822;
     color: white;
 }
@@ -118,5 +135,15 @@ input[type="radio"]{
     right: 50px;
 }
 
+
+.time{
+    background-image: url(assets/svg/clock.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+}
 
 /* закрасить 1 часть num active (figma) */
