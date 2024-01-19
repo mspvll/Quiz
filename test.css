@@ -95,10 +95,12 @@
 
 .answer:active{
     background-color: #ffb429;
+    
 }
 
 input[type="radio"]:checked+.answer{
     background-color: #FCC822;
+    color: white;  
 }
 
 input[type="radio"]{
@@ -145,5 +147,3 @@ input[type="radio"]{
     text-align: center;
     line-height: 60px;
 }
-
-/* закрасить 1 часть num active (figma) */
