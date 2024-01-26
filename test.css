@@ -57,7 +57,6 @@
     background-color: #FCC822;
     color: white;
     text-align: center;
-    /* line-height: 200px; */
     position: relative;
     left: 50%;
     right: 50%;
@@ -66,7 +65,7 @@
     font-size: 32px;
     display: flex;
     align-items: center;
-
+    justify-content: center;
 
 }
 
