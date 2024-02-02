@@ -8,7 +8,9 @@ const quizData = [
             'table, tr, td',
             'h1, h2, h3'
         ],
-        currentAnswerId: 0
+        currentAnswerId: 0,
+        user_answer_i: null
+
     },
     {
         id: '1',
@@ -19,7 +21,8 @@ const quizData = [
             'Cascading Style Sheet',
             'Colorful Style Sheet'
         ],
-        currentAnswerId: 2
+        currentAnswerId: 2,
+        user_answer_i: null
     },
     {
         id: '2',
@@ -30,7 +33,8 @@ const quizData = [
             'font-color: green;',
             'background-color: yellow;'
         ],
-        currentAnswerId: 0
+        currentAnswerId: 0,
+        user_answer_i: null
     },
     {
         id: '3',
@@ -41,7 +45,8 @@ const quizData = [
             'Отдельный файл с расширением .css и подключение через <link>',
             'Встроенный стиль внутри тега <head>'
         ],
-        currentAnswerId: 2
+        currentAnswerId: 2,
+        user_answer_i: null
     },
     {
         id: '4',
@@ -52,7 +57,8 @@ const quizData = [
             'background: rgba(255, 0, 0, 0.5);',
             'filter: alpha(50);'
         ],
-        currentAnswerId: 2
+        currentAnswerId: 2,
+        user_answer_i: null
     }
 ];
 
@@ -63,9 +69,12 @@ let last = document.querySelector(".last")
 let progress = document.querySelector(".progress")
 let time = document.querySelector(".time")
 let task = document.querySelector(".question") 
+let answers = document.querySelector(".answers")
 let current_item = 0
 
-task.textContent = quizData[current_item].title
+task.textContent = quizData[current_item].title;
+answers.innerHTML = "";
+quizData[current_item].answers.map((a,i)=> add_answer(a,i,quizData[current_item]))
 
 function next_quation(isNext) {
     if (isNext && current_item < nums.length - 1) {
@@ -74,13 +83,18 @@ function next_quation(isNext) {
         let width = (nums_container.offsetWidth / (nums.length - 1)) * current_item + "px";
         progress.style.width = width;
         task.textContent = quizData[current_item].title
-        quizData[current_item].answers.map(a=> add_answer(a))
+        answers.innerHTML = "";
+        quizData[current_item].answers.map((a,i)=> add_answer(a,i,quizData[current_item]))
+
     } else if (current_item > 0 && !isNext) {
         nums[current_item].classList.remove("active");
         current_item -= 1;
         let width = (nums_container.offsetWidth / (nums.length - 1)) * current_item + "px";
         progress.style.width = width;
         task.textContent = quizData[current_item].title
+        answers.innerHTML = "";
+        quizData[current_item].answers.map((a,i)=> add_answer(a,i,quizData[current_item]))
+
     }
 
 }
@@ -98,25 +112,28 @@ function min() {
 let interval = setInterval(() => min(), 1000)
 
 
-function add_answer(answer){
-    let id = Math.random()
-    let answers = document.querySelector(".answers")
+function add_answer(answer,id, task){
     let input = document.createElement("input");
     input.setAttribute('type', 'radio');
     input.setAttribute('name', 'answer');
-    input.setAttribute('id', `a${id}`);
+    input.setAttribute('id', `a${task.id}${id}`);
+    input.checked = task.user_answer_i === id;
 
     let label = document.createElement("label");
-    label.setAttribute('for', `a${id}`);
+    label.setAttribute('for', `a${task.id}${id}`);
     label.setAttribute('class', 'answer');
-    label.textContent = answer
+    label.textContent = answer;
+    label.addEventListener("click", ()=> set_user_answer_id(task.id,id));
 
-    console.log(input);
-    console.log(label);
-
-
-
+    answers.appendChild(input);
+    answers.appendChild(label);
 
 }
+
+function set_user_answer_id(q_id, answ_id){
+    quizData[q_id].user_answer_i = answ_id;
+    
+}
+
 
 // из консоли в разметку (ответы) и чтобы изменялись по нажатию (следующий)
