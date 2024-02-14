@@ -139,6 +139,11 @@ input[type="radio"]{
 }
 
 
+.display_none{
+    display: none;
+}
+
+
 .time{
     background-image: url(assets/svg/clock.svg);
     background-repeat: no-repeat;

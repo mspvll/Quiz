@@ -70,28 +70,30 @@ let progress = document.querySelector(".progress")
 let time = document.querySelector(".time")
 let task = document.querySelector(".question") 
 let answers = document.querySelector(".answers")
+let pass = document.querySelector(".pass")
 let current_item = 0
 
-task.textContent = quizData[current_item].title;
-answers.innerHTML = "";
-quizData[current_item].answers.map((a,i)=> add_answer(a,i,quizData[current_item]))
+task.textContent = quizData[current_item].title; // меняется вопрос
+answers.innerHTML = ""; // очистили прошлые ответы
+quizData[current_item].answers.map((answ,i)=> add_answer(answ,i,quizData[current_item])) // добавили новые ответы
 
 function next_quation(isNext) {
-    if (isNext && current_item < nums.length - 1) {
+    // вот тут 
+    if (isNext && current_item < nums.length - 1) { // если нажатый вопрос меньше кол-ва вопросов
         current_item += 1;
-        nums[current_item].classList.add("active");
-        let width = (nums_container.offsetWidth / (nums.length - 1)) * current_item + "px";
-        progress.style.width = width;
-        task.textContent = quizData[current_item].title
-        answers.innerHTML = "";
-        quizData[current_item].answers.map((a,i)=> add_answer(a,i,quizData[current_item]))
+        nums[current_item].classList.add("active"); // кружок обводится желтым
+        let width = (nums_container.offsetWidth / (nums.length - 1)) * current_item + "px"; // определяет длину заливки палки 
+        progress.style.width = width; // меняет длину заливки цветом
+        task.textContent = quizData[current_item].title // меняется вопрос
+        answers.innerHTML = ""; // очистили прошлые ответы
+        quizData[current_item].answers.map((a,i)=> add_answer(a,i,quizData[current_item])) // добавили новые ответы
 
-    } else if (current_item > 0 && !isNext) {
-        nums[current_item].classList.remove("active");
+    } else if (current_item > 0 && !isNext) { // если счетчик больше 0 и не равен нажатому вопросу
+        nums[current_item].classList.remove("active"); // обводка убирается
         current_item -= 1;
         let width = (nums_container.offsetWidth / (nums.length - 1)) * current_item + "px";
-        progress.style.width = width;
-        task.textContent = quizData[current_item].title
+        progress.style.width = width; // меняет длину заливки цветом
+        task.textContent = quizData[current_item].title // меняется вопрос
         answers.innerHTML = "";
         quizData[current_item].answers.map((a,i)=> add_answer(a,i,quizData[current_item]))
 
@@ -99,7 +101,17 @@ function next_quation(isNext) {
 
 }
 
-next.addEventListener("click", () => next_quation(true))
+next.addEventListener("click", () => {
+    if (quizData[current_item].user_answer_i !== null){
+        next_quation(true)
+    }
+    else{
+        alert("Выберете вариант ответа или нажмите 'Пропустить'.")
+    }
+    
+    
+})
+pass.addEventListener("click", () => next_quation(true))
 last.addEventListener("click", () => next_quation(false))
 
 function min() {
@@ -109,31 +121,31 @@ function min() {
         time.textContent -= 1
 }
 
-let interval = setInterval(() => min(), 1000)
+let interval = setInterval(() => min(), 1000)  // функция времени
 
 
 function add_answer(answer,id, task){
-    let input = document.createElement("input");
+    let input = document.createElement("input"); 
     input.setAttribute('type', 'radio');
-    input.setAttribute('name', 'answer');
-    input.setAttribute('id', `a${task.id}${id}`);
-    input.checked = task.user_answer_i === id;
+    input.setAttribute('name', 'answer'); // создается вопрос
+    input.setAttribute('id', `a${task.id}${id}`); 
+    input.checked = task.user_answer_i === id; // выбирается вопрос 
 
     let label = document.createElement("label");
     label.setAttribute('for', `a${task.id}${id}`);
     label.setAttribute('class', 'answer');
-    label.textContent = answer;
-    label.addEventListener("click", ()=> set_user_answer_id(task.id,id));
+    label.textContent = answer; // создается вопрос
+    label.addEventListener("click", ()=> set_user_answer_id(task.id,id)); // по клику запоминается ответ
 
-    answers.appendChild(input);
-    answers.appendChild(label);
+    answers.appendChild(input); 
+    answers.appendChild(label); // в список ответов добавляется ответ
 
 }
 
 function set_user_answer_id(q_id, answ_id){
-    quizData[q_id].user_answer_i = answ_id;
+    quizData[q_id].user_answer_i = answ_id; // пустому значению user_answer_i присваивается выбранный ответ
     
 }
 
 
-// из консоли в разметку (ответы) и чтобы изменялись по нажатию (следующий)
+// если это последний вопрос, display_none убрать у end, и добавить к next pass
