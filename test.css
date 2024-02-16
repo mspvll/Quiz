@@ -153,3 +153,54 @@ input[type="radio"]{
     text-align: center;
     line-height: 60px;
 }
+
+.modal{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wnd{
+    width: 80vw;
+    height: 70vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-image: url(assets/svg/scoree.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+    position: relative;
+}
+
+.your_score{
+    font-size: 48px;
+    color: #ffffff;
+
+}
+
+.numb{
+    font-size: 178px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+    
+}
+
+.return{
+    height: 40px;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+
+/* когда "вернуться на главную" чтобы окно закрывалось (добавлять display_none) */

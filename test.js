@@ -72,15 +72,16 @@ let task = document.querySelector(".question")
 let answers = document.querySelector(".answers")
 let pass = document.querySelector(".pass")
 let current_item = 0
+let end = document.querySelector(".end")
 
 task.textContent = quizData[current_item].title; // меняется вопрос
 answers.innerHTML = ""; // очистили прошлые ответы
 quizData[current_item].answers.map((answ,i)=> add_answer(answ,i,quizData[current_item])) // добавили новые ответы
 
 function next_quation(isNext) {
-    // вот тут 
     if (isNext && current_item < nums.length - 1) { // если нажатый вопрос меньше кол-ва вопросов
         current_item += 1;
+        change_btns(current_item);
         nums[current_item].classList.add("active"); // кружок обводится желтым
         let width = (nums_container.offsetWidth / (nums.length - 1)) * current_item + "px"; // определяет длину заливки палки 
         progress.style.width = width; // меняет длину заливки цветом
@@ -91,6 +92,7 @@ function next_quation(isNext) {
     } else if (current_item > 0 && !isNext) { // если счетчик больше 0 и не равен нажатому вопросу
         nums[current_item].classList.remove("active"); // обводка убирается
         current_item -= 1;
+        change_btns(current_item);
         let width = (nums_container.offsetWidth / (nums.length - 1)) * current_item + "px";
         progress.style.width = width; // меняет длину заливки цветом
         task.textContent = quizData[current_item].title // меняется вопрос
@@ -100,6 +102,22 @@ function next_quation(isNext) {
     }
 
 }
+
+function change_btns(current_item){
+    if (current_item === nums.length - 1){
+        next.classList.add("display_none")
+        pass.classList.add("display_none")
+        end.classList.remove("display_none");
+
+    }else{
+        next.classList.remove("display_none")
+        pass.classList.remove("display_none")
+        end.classList.add("display_none");
+
+    }
+    
+}
+
 
 next.addEventListener("click", () => {
     if (quizData[current_item].user_answer_i !== null){
