@@ -9,8 +9,8 @@ const quizData = [
             'h1, h2, h3'
         ],
         currentAnswerId: 0,
-        user_answer_i: null
-
+        user_answer_i: null,
+        total_time: 5
     },
     {
         id: '1',
@@ -22,7 +22,9 @@ const quizData = [
             'Colorful Style Sheet'
         ],
         currentAnswerId: 2,
-        user_answer_i: null
+        user_answer_i: null,
+        total_time: 30
+
     },
     {
         id: '2',
@@ -34,7 +36,9 @@ const quizData = [
             'background-color: yellow;'
         ],
         currentAnswerId: 0,
-        user_answer_i: null
+        user_answer_i: null,
+        total_time: 30
+
     },
     {
         id: '3',
@@ -46,7 +50,9 @@ const quizData = [
             'Встроенный стиль внутри тега <head>'
         ],
         currentAnswerId: 2,
-        user_answer_i: null
+        user_answer_i: null,
+        total_time: 30
+
     },
     {
         id: '4',
@@ -58,10 +64,11 @@ const quizData = [
             'filter: alpha(50);'
         ],
         currentAnswerId: 2,
-        user_answer_i: null
+        user_answer_i: null,
+        total_time: 30
+
     }
 ];
-
 let nums = document.querySelectorAll(".num")
 let nums_container = document.querySelector(".nums")
 let next = document.querySelector(".next")
@@ -73,10 +80,15 @@ let answers = document.querySelector(".answers")
 let pass = document.querySelector(".pass")
 let current_item = 0
 let end = document.querySelector(".end")
+let returnn = document.querySelector(".return")
+let modal = document.querySelector(".modal")
+let score = 0
+let numb = document.querySelector(".numb")
 
 task.textContent = quizData[current_item].title; // меняется вопрос
 answers.innerHTML = ""; // очистили прошлые ответы
 quizData[current_item].answers.map((answ,i)=> add_answer(answ,i,quizData[current_item])) // добавили новые ответы
+time.textContent = quizData[current_item].total_time
 
 function next_quation(isNext) {
     if (isNext && current_item < nums.length - 1) { // если нажатый вопрос меньше кол-ва вопросов
@@ -133,10 +145,13 @@ pass.addEventListener("click", () => next_quation(true))
 last.addEventListener("click", () => next_quation(false))
 
 function min() {
-        if (time.textContent == 1){
-            clearInterval(interval);
-        }
-        time.textContent -= 1
+    if (time.textContent == 0){
+        // clearInterval(interval);
+        return;
+    }
+    let total_count_item = quizData[current_item].total_time;
+    quizData[current_item].total_time -= 1;
+    time.textContent = total_count_item;
 }
 
 let interval = setInterval(() => min(), 1000)  // функция времени
@@ -165,5 +180,22 @@ function set_user_answer_id(q_id, answ_id){
     
 }
 
+end.addEventListener("click", () => {
+    modal.classList.remove("display_none");
+    for(let i = 0; i < quizData.length; i++){
+        if(quizData[i].user_answer_i === quizData[i].currentAnswerId){
+            score += 1;
+        }
+    }
+    numb.textContent = score
+})
 
-// если это последний вопрос, display_none убрать у end, и добавить к next pass
+function return_to_main(){
+    // modal.classList.add("display_none");
+    console.log(window.location = "file:///C:/Users/PC/Desktop/Quiz/index.html");
+    console.log(123);
+}
+
+returnn.addEventListener("click", () => return_to_main())
+
+// найти ошибку (время)

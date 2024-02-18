@@ -124,6 +124,7 @@ input[type="radio"]{
     text-align: center;
     line-height: 35px;
     position: relative;
+    box-shadow: 2px 4px 5px rgba(185, 185, 185, 0.603);
 }
 
 
@@ -140,7 +141,7 @@ input[type="radio"]{
 
 
 .display_none{
-    display: none;
+    display: none !important;
 }
 
 
@@ -197,10 +198,24 @@ input[type="radio"]{
 }
 
 .return{
-    height: 40px;
+    height: 45px;
     position: absolute;
     bottom: 30px;
     right: 30px;
+    background-color: #FCC822;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 3px 5px 5px rgba(185, 185, 185, 0.603);
+}
+
+.return:active{
+    width: 165px;
+    height: 42px;
+    margin-right: 2px;
+    font-size:  13px ;
+    margin-bottom: 2px;
 }
 
 /* когда "вернуться на главную" чтобы окно закрывалось (добавлять display_none) */
