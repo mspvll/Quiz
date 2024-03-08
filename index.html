@@ -11,7 +11,6 @@
 <body>
     <header class="header">
         <img src="assets/svg/logo.svg" alt="logo" class="logo">
-        <button class="head_btn">Войти</button>
     </header>
     
     <main class="main">
@@ -21,7 +20,7 @@
                 <div class="stick"></div>
                 <div class="small_txt">Мы помогаем готовиться к экзаменам и тестам</div>
             </div>
-            <a class="start" href="test.html">Начните решать</a>
+            <div class="start btn" onclick="toggle_modal(true)">Начните решать</div>
             <img src="assets/svg/Vector_main.svg" class="vector">
         </div>
         <div class="right">
@@ -30,6 +29,15 @@
         
     </main>
 
+
+    <div class="modal display_none">
+        <div class="wnd">
+            <div class="cross" onclick="toggle_modal(false)">✖</div>
+            <h1 class="topic">Выберете тему теста</h1>
+            <div class="tests"></div>            
+        </div>     
+    </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

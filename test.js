@@ -68,8 +68,8 @@ const quizData = [
         total_time: 30
 
     }
+    
 ];
-let nums = document.querySelectorAll(".num")
 let nums_container = document.querySelector(".nums")
 let next = document.querySelector(".next")
 let last = document.querySelector(".last")
@@ -84,11 +84,42 @@ let returnn = document.querySelector(".return")
 let modal = document.querySelector(".modal")
 let score = 0
 let numb = document.querySelector(".numb")
+console.log(history.state);
 
 task.textContent = quizData[current_item].title; // меняется вопрос
 answers.innerHTML = ""; // очистили прошлые ответы
 quizData[current_item].answers.map((answ,i)=> add_answer(answ,i,quizData[current_item])) // добавили новые ответы
 time.textContent = quizData[current_item].total_time
+
+for(let i = 0; i < quizData.length; i++){
+    let new_num = document.createElement("div"); 
+    new_num.addEventListener("click", () => go_to(i))
+    new_num.classList.add("num");
+    new_num.textContent = i + 1;
+    if(i === 0) new_num.classList.add("active");
+    nums_container.appendChild(new_num);
+
+}
+let nums = document.querySelectorAll(".num")
+nums_container = document.querySelector(".nums")
+
+function go_to(index){
+    current_item = index;
+    task.textContent = quizData[current_item].title; // меняется вопрос
+    answers.innerHTML = ""; // очистили прошлые ответы
+    quizData[current_item].answers.map((answ,i)=> add_answer(answ,i,quizData[current_item])) // добавили новые ответы
+    time.textContent = quizData[current_item].total_time;
+    for(let num of nums){
+        if(+num.textContent <= index+1){
+            num.classList.add("active");
+        } else{
+            num.classList.remove("active");
+        }
+    }
+    let width = (nums_container.offsetWidth / (nums.length - 1)) * index + "px"; // определяет длину заливки палки 
+        progress.style.width = width; // меняет длину заливки цветом
+}
+
 
 function next_quation(isNext) {
     if (isNext && current_item < nums.length - 1) { // если нажатый вопрос меньше кол-ва вопросов
@@ -145,9 +176,9 @@ pass.addEventListener("click", () => next_quation(true))
 last.addEventListener("click", () => next_quation(false))
 
 function min() {
-    if (time.textContent == 0){
-        // clearInterval(interval);
-        return;
+    if (quizData[current_item].total_time == -1){
+        time.textContent = 0;
+        return
     }
     let total_count_item = quizData[current_item].total_time;
     quizData[current_item].total_time -= 1;
@@ -191,11 +222,12 @@ end.addEventListener("click", () => {
 })
 
 function return_to_main(){
-    // modal.classList.add("display_none");
-    console.log(window.location = "file:///C:/Users/PC/Desktop/Quiz/index.html");
-    console.log(123);
+    let location = window.location.href;
+    location =  location.replace("test.html",'index.html');
+    window.location = location
+
 }
 
 returnn.addEventListener("click", () => return_to_main())
 
-// найти ошибку (время)
+// найти ошибку (время)  

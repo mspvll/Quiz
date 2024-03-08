@@ -129,7 +129,7 @@ body{
     font-family: 'Poppins', 'Roboto', sans-serif;
 }
 
-.start{
+.btn{
     width: 130px;
     height: 35px;
     background-color: #FCC822;
@@ -140,15 +140,15 @@ body{
     line-height: 35px;
     margin-top: 40px;
     text-decoration: none;
-    
+    cursor: pointer;
 
 }
 
-.start:hover{
+.btn:hover{
     box-shadow: 2px 3px 10px #a7a7a7a6;
 }
 
-.start:active{
+.btn:active{
     width: 125px;
     height: 32px;
     font-size: 14px;
@@ -156,8 +156,80 @@ body{
 }
 
 .vector{
-    width: 250px;
+    width: 250px;   
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+.display_none{
+    display: none !important;
+}
+
+.modal{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wnd{
+    width: 80vw;
+    height: 70vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+    position: relative;
+    flex-direction: column;
+}
+
+.cross{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #7c7c7c;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+.topic{
+    font-weight: bold;
+    font-size: 44px;
+    color: #5e5e5e;
+    margin-top: 30px;
+}
+
+.tests{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    flex-wrap: wrap;
+    width: 60vw;
+    justify-content: center;
+}
+
+.test{
+    min-width: 100px;
+    height: 30px;
+    background-color: #cecece;
+    text-align: center;
+    line-height: 30px;
+    
+
+}
+
+.test:hover{
+    background-color: #FCC822;
+    cursor: pointer;
 }
