@@ -16,7 +16,8 @@ test_db.map(test=> {
     new_test.addEventListener("click", () => {
         let location = window.location.href;
         location =  location.replace("index.html",'test.html');
-        history.pushState({id:test.id},location)
+        localStorage.setItem("theme", test.title)
+
         window.location = location
         
     })

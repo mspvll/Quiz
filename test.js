@@ -1,4 +1,4 @@
-const quizData = [
+const quiz_html_css = [
     {
         id: '0',
         title: 'Какие основные теги используются для структурирования HTML-документа?',
@@ -70,6 +70,33 @@ const quizData = [
     }
     
 ];
+
+const quiz_math = [
+    {
+        id: '0',
+        title: '2+2',
+        answers: [
+            '2',
+            '1',
+            '4',
+            '7'
+        ],
+        currentAnswerId: 2,
+        user_answer_i: null,
+        total_time: 5
+    }
+];
+
+let themes = {
+    "html,css": quiz_html_css,
+    "math": quiz_math
+}
+let theme = localStorage.getItem("theme")
+console.log(theme);
+console.log(themes[theme]);
+
+let quizData = themes[theme]
+
 let nums_container = document.querySelector(".nums")
 let next = document.querySelector(".next")
 let last = document.querySelector(".last")
@@ -84,7 +111,6 @@ let returnn = document.querySelector(".return")
 let modal = document.querySelector(".modal")
 let score = 0
 let numb = document.querySelector(".numb")
-console.log(history.state);
 
 task.textContent = quizData[current_item].title; // меняется вопрос
 answers.innerHTML = ""; // очистили прошлые ответы
@@ -229,5 +255,3 @@ function return_to_main(){
 }
 
 returnn.addEventListener("click", () => return_to_main())
-
-// найти ошибку (время)  

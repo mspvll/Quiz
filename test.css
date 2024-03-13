@@ -114,11 +114,14 @@ input[type="radio"]{
 }
 
 .bottoms{
-    margin-top: 250px;
+    /* margin-top: 250px; */
+    max-width: 800px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    margin: 250px auto 0;
+
 }
 
 .btn{
@@ -128,8 +131,9 @@ input[type="radio"]{
     color: #333333;
     text-align: center;
     line-height: 35px;
-    position: relative;
+    align-self: center;
     box-shadow: 2px 4px 5px rgba(185, 185, 185, 0.603);
+    margin: 0;
 }
 
 
@@ -143,7 +147,8 @@ input[type="radio"]{
     color:  #FCC822;
     position: absolute;
     right: 50px;
-    cursor: pointer;
+    cursor: pointer; 
+    /* bottom: 22px; */
 }
 
 
