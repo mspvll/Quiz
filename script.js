@@ -5,7 +5,11 @@ let test_db = [
     },
     {
         id: 2,
-        title: "math"
+        title: "Математика"
+    },
+    {
+        id: 3,
+        title: "Русский язык"
     }
 ]
 let tests = document.querySelector(".tests");

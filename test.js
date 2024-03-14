@@ -10,7 +10,7 @@ const quiz_html_css = [
         ],
         currentAnswerId: 0,
         user_answer_i: null,
-        total_time: 5
+        total_time: 20
     },
     {
         id: '1',
@@ -23,7 +23,7 @@ const quiz_html_css = [
         ],
         currentAnswerId: 2,
         user_answer_i: null,
-        total_time: 30
+        total_time: 20
 
     },
     {
@@ -37,7 +37,7 @@ const quiz_html_css = [
         ],
         currentAnswerId: 0,
         user_answer_i: null,
-        total_time: 30
+        total_time: 20
 
     },
     {
@@ -51,7 +51,7 @@ const quiz_html_css = [
         ],
         currentAnswerId: 2,
         user_answer_i: null,
-        total_time: 30
+        total_time: 20
 
     },
     {
@@ -65,7 +65,7 @@ const quiz_html_css = [
         ],
         currentAnswerId: 2,
         user_answer_i: null,
-        total_time: 30
+        total_time: 20
 
     }
     
@@ -74,22 +74,178 @@ const quiz_html_css = [
 const quiz_math = [
     {
         id: '0',
-        title: '2+2',
+        title: 'Что такое периметр?',
         answers: [
-            '2',
-            '1',
-            '4',
-            '7'
+            'Длинна прямоугольника умноженное на ширину',
+            'Длинна одной сторны',
+            'Сумма длин всех сторн'
         ],
         currentAnswerId: 2,
         user_answer_i: null,
-        total_time: 5
+        total_time: 20
+    },
+    {
+        id: '1',
+        title: 'График функции у=кх+b',
+        answers: [
+            'Прямая',
+            'Двухстороняя',
+            'Кривая',
+            'Парабола'
+        ],
+        currentAnswerId: 0,
+        user_answer_i: null,
+        total_time: 20
+    },
+    {
+        id: '2',
+        title: 'Утверждение не требующее доказательства - это',
+        answers: [
+            'Теорема',
+            'Аксиома',
+            'Правило',
+            'Формула'
+        ],
+        currentAnswerId: 1,
+        user_answer_i: null,
+        total_time: 20
+    },
+    {
+        id: '3',
+        title: 'Как найти площадь круга',
+        answers: [
+            'S = ah/2',
+            'S = Pr/2',
+            'S = 2πR',
+            'S = πR²'
+        ],
+        currentAnswerId: 3,
+        user_answer_i: null,
+        total_time: 25
+    },
+    {
+        id: '4',
+        title: 'Какое арифметическое действие используется для показателей степеней при умножении целых чисел?',
+        answers: [
+            'Деление',
+            'Вычитание',
+            'Сложение',
+            'Умножение'
+        ],
+        currentAnswerId: 2,
+        user_answer_i: null,
+        total_time: 30
+    },
+    {
+        id: '5',
+        title: ' Какая десятичная дробь получится при преобразовании числа 10⁻²',
+        answers: [
+            '0,1',
+            '-100',
+            '-0,001',
+            '0,01'
+        ],
+        currentAnswerId: 3,
+        user_answer_i: null,
+        total_time: 30
+    },
+    {
+        id: '6',
+        title: 'Чему равен старший коэффициент у квадратного уравнения x² + 8x + 15 = 0',
+        answers: [
+            '8',
+            '1',
+            '15',
+            '0'
+        ],
+        currentAnswerId: 1,
+        user_answer_i: null,
+        total_time: 25
+    },
+    {
+        id: '7',
+        title: 'Сколько корней имеет квадратный трехчлен, если D<0?',
+        answers: [
+            'Ни одного',
+            '1',
+            '2'
+        ],
+        currentAnswerId: 0,
+        user_answer_i: null,
+        total_time: 20
+    },
+];
+
+const quiz_rus = [
+    {
+        id: '0',
+        title: 'Где ударение стоит неправильно?',
+        answers: [
+            'Свёкла',
+            'Творо́г',
+            'Обеспе́чение',
+            'Ква́ртал'
+        ],
+        currentAnswerId: 3,
+        user_answer_i: null,
+        total_time: 30
+    },
+    {
+        id: '1',
+        title: 'Какая форма множественного числа у слова «дно»',
+        answers: [
+            'Днища',
+            'Дны',
+            'Донья',
+            'Дни'
+        ],
+        currentAnswerId: 2,
+        user_answer_i: null,
+        total_time: 20
+    },
+    {
+        id: '2',
+        title: 'Раздел языкознания, изучающий происхождение слов',
+        answers: [
+            'Лексика',
+            'Этимология',
+            'Лексографика'
+        ],
+        currentAnswerId: 1,
+        user_answer_i: null,
+        total_time: 20
+    },
+    {
+        id: '3',
+        title: 'Какой частью речи может быть выражено обращение?',
+        answers: [
+            'Существительное',
+            'Прилагательное',
+            'Причастие',
+            'Возможны все варианты'
+        ],
+        currentAnswerId: 3,
+        user_answer_i: null,
+        total_time: 25
+    },
+    {
+        id: '4',
+        title: 'Слова, употребляемые в той или иной местности',
+        answers: [
+            'Общепринятые',
+            'Граничные',
+            'Диалектные'
+        ],
+        currentAnswerId: 2,
+        user_answer_i: null,
+        total_time: 20
     }
 ];
 
 let themes = {
     "html,css": quiz_html_css,
-    "math": quiz_math
+    "Математика": quiz_math,
+    "Русский язык": quiz_rus
 }
 let theme = localStorage.getItem("theme")
 console.log(theme);
