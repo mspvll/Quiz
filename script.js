@@ -10,6 +10,14 @@ let test_db = [
     {
         id: 3,
         title: "Русский язык"
+    },
+    {
+        id: 4,
+        title: "Биология"
+    },
+    {
+        id: 5,
+        title: "География"
     }
 ]
 let tests = document.querySelector(".tests");

@@ -10,7 +10,7 @@ const quiz_html_css = [
         ],
         currentAnswerId: 0,
         user_answer_i: null,
-        total_time: 20
+        total_time: 5
     },
     {
         id: '1',
@@ -242,14 +242,169 @@ const quiz_rus = [
     }
 ];
 
+const quiz_biology = [
+    {
+        id: '0',
+        title: 'Одноклеточная зелёная водоросль с двумя жгутиками',
+        answers: [
+            'Хламидомонада',
+            'Хлорелла',
+            'цианобактерия'
+        ],
+        currentAnswerId: 0,
+        user_answer_i: null,
+        total_time: 25
+    },
+    {
+        id: '1',
+        title: 'Древняя группа высших травянистых растений. Распространены во влажных лесах',
+        answers: [
+            'Мхи',
+            'Плауны',
+            'Папоротники',
+            'Водоросли'
+        ],
+        currentAnswerId: 2,
+        user_answer_i: null,
+        total_time: 30
+    },
+    {
+        id: '2',
+        title: 'У птиц хорошо развиты органы чувств:',
+        answers: [
+            'Обоняние',
+            'Осязание',
+            'Слух и зрение'
+        ],
+        currentAnswerId: 2,
+        user_answer_i: null,
+        total_time: 25
+    },
+    {
+        id: '3',
+        title: 'К насекомоядным млекопитающим относят...',
+        answers: [
+            'Бурозубок',
+            'Тюленей',
+            'Китов',
+            'Медведей'
+        ],
+        currentAnswerId: 1,
+        user_answer_i: null,
+        total_time: 30
+    },
+    {
+        id: '4',
+        title: 'Наука изучающая закономерности наследственности и изменчивости?',
+        answers: [
+            'Биология',
+            'Генетика',
+            'Палеонтология'
+        ],
+        currentAnswerId: 1,
+        user_answer_i: null,
+        total_time: 25
+    },
+    {
+        id: '5',
+        title: 'Продолжительность пребывания на солнце...',
+        answers: [
+            'Можно не ограничивать',
+            'Должна быть не более пяти минут',
+            'Не превышать 30-40 минут'
+        ],
+        currentAnswerId: 2,
+        user_answer_i: null,
+        total_time: 30
+    },
+    {
+        id: '6',
+        title: 'Дыхательная система включает:',
+        answers: [
+            'Лёгкие и дыхательные пути',
+            'Кожу и дыхательные пути',
+            'Лрудную клетку и лёгкие'
+        ],
+        currentAnswerId: 0,
+        user_answer_i: null,
+        total_time: 30
+    }
+];
+
+const quiz_geogr = [
+    {
+        id: '0',
+        title: 'Столица Швеции?',
+        answers: [
+            'Копенгаген',
+            'Стокгольм',
+            'Дублин'
+        ],
+        currentAnswerId: 1,
+        user_answer_i: null,
+        total_time: 25
+    },
+    {
+        id: '1',
+        title: 'Сколько стран насчитывается сегодня в мире?',
+        answers: [
+            '150',
+            '230',
+            '200',
+            '350'
+        ],
+        currentAnswerId: 1,
+        user_answer_i: null,
+        total_time: 30
+    },
+    {
+        id: '2',
+        title: 'С каким государством граничит Индия на западе?',
+        answers: [
+            'Пакистаном',
+            'Бангладешем',
+            'Россией'
+        ],
+        currentAnswerId: 0,
+        user_answer_i: null,
+        total_time: 25
+    },
+    {
+        id: '3',
+        title: 'Укажите самую крупную по населению страну Африки:',
+        answers: [
+            'Нигерия',
+            'ЮАР',
+            'Марокко'
+        ],
+        currentAnswerId: 0,
+        user_answer_i: null,
+        total_time: 30
+    },
+    {
+        id: '4',
+        title: 'Укажите в предложенном списке стран Европы крупнейшую по численности населения страну:',
+        answers: [
+            'Дания',
+            'Испания',
+            'Швеция',
+            'Нидерланды'
+        ],
+        currentAnswerId: 1,
+        user_answer_i: null,
+        total_time: 25
+    }
+];
+
 let themes = {
     "html,css": quiz_html_css,
     "Математика": quiz_math,
-    "Русский язык": quiz_rus
+    "Русский язык": quiz_rus,
+    "Биология": quiz_biology,
+    "География": quiz_geogr
+
 }
 let theme = localStorage.getItem("theme")
-console.log(theme);
-console.log(themes[theme]);
 
 let quizData = themes[theme]
 
@@ -268,10 +423,12 @@ let modal = document.querySelector(".modal")
 let score = 0
 let numb = document.querySelector(".numb")
 
+
 task.textContent = quizData[current_item].title; // меняется вопрос
 answers.innerHTML = ""; // очистили прошлые ответы
 quizData[current_item].answers.map((answ,i)=> add_answer(answ,i,quizData[current_item])) // добавили новые ответы
 time.textContent = quizData[current_item].total_time
+min()
 
 for(let i = 0; i < quizData.length; i++){
     let new_num = document.createElement("div"); 
@@ -345,7 +502,7 @@ function change_btns(current_item){
 
 
 next.addEventListener("click", () => {
-    if (quizData[current_item].user_answer_i !== null){
+    if (quizData[current_item].user_answer_i !== null || quizData[current_item].total_time == -1){
         next_quation(true)
     }
     else{
@@ -360,8 +517,12 @@ last.addEventListener("click", () => next_quation(false))
 function min() {
     if (quizData[current_item].total_time == -1){
         time.textContent = 0;
+        for(let i of document.querySelectorAll(".answer_input")){
+            i.disabled = true;
+        }
         return
     }
+
     let total_count_item = quizData[current_item].total_time;
     quizData[current_item].total_time -= 1;
     time.textContent = total_count_item;
@@ -369,13 +530,14 @@ function min() {
 
 let interval = setInterval(() => min(), 1000)  // функция времени
 
-
 function add_answer(answer,id, task){
     let input = document.createElement("input"); 
+    input.classList.add('answer_input')
     input.setAttribute('type', 'radio');
     input.setAttribute('name', 'answer'); // создается вопрос
     input.setAttribute('id', `a${task.id}${id}`); 
-    input.checked = task.user_answer_i === id; // выбирается вопрос 
+    input.checked = task.user_answer_i === id; // выбирается вопрос
+    
 
     let label = document.createElement("label");
     label.setAttribute('for', `a${task.id}${id}`);
@@ -389,7 +551,10 @@ function add_answer(answer,id, task){
 }
 
 function set_user_answer_id(q_id, answ_id){
-    quizData[q_id].user_answer_i = answ_id; // пустому значению user_answer_i присваивается выбранный ответ
+    if (quizData[current_item].total_time != -1){
+        quizData[q_id].user_answer_i = answ_id; // пустому значению user_answer_i присваивается выбранный ответ
+    }
+    
     
 }
 
