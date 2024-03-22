@@ -1,0 +1,72 @@
+.container{
+    margin-top: 100px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 400px;
+    background-color: #FCC822;
+    color: rgb(114, 114, 114);
+    text-align: center;
+    padding: 10px 20px;
+    justify-content: space-around;
+}
+
+.quations{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.quation{
+    display: flex;
+    margin-bottom: 20px;
+    font-size: 25px;
+    width: 100%;
+    gap: 10px;
+    color: #3b3b3b;
+}
+
+.quation input{
+    font-size: 25px;
+    outline: none;
+    border: none;
+    background-color: #ffffff3f;
+    width: 100%;
+}
+
+.inp_q{
+    font-size: 30px;
+    outline: none;
+    border: none;
+    width: 100%;
+    background-color: #ffffff3f;
+}
+
+
+.create_txt{
+    font-size: 32px;
+    color: #3b3b3b;
+    margin-top: 10px;
+
+}
+
+.inp_theme{
+    margin-top: 20px;
+    font-size: 22px;
+    color: #919191;
+    outline: none;
+    border: none;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.create_test{
+    border: none;
+    outline: none;
+}

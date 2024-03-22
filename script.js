@@ -46,3 +46,13 @@ function toggle_modal(is_show){
     }
 }
 
+let create = document.querySelector(".create")
+
+function create_test(){
+    let location = window.location.href;
+    location =  location.replace("index.html",'create.html');
+    window.location = location
+
+}
+
+create.addEventListener("click", () => create_test())

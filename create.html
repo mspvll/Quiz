@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create_page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="create.css">
+</head>
+
+<body>
+    <form id="create_form" >
+        <h1 class="create_txt">Создание теста</h1>
+        <input class="inp_theme" name="title" placeholder="Впишите название теста...">
+        <div class="containers">
+            <div class="container">
+                <div class="cross">✖</div>
+                <input class="inp_q" name="quation" placeholder="Впишите вопрос...">
+                <div class="quations">
+                    <label class="quation">1. <input name="answer1" placeholder="Впишите вариант ответа..."></label>
+                    <label class="quation">2. <input name="answer2" placeholder="Впишите вариант ответа..."></label>
+                    <label class="quation">3. <input name="answer3" placeholder="Впишите вариант ответа..."></label>
+                    <label class="quation">4. <input name="answer4" placeholder="Впишите вариант ответа..."></label>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="btns">
+            <div class="btn plus">Добавить вопрос +</div>
+            <button type="button" onclick="submit_form()" class="btn create_test">Создать тест</button>
+        </div>
+
+    </form>
+
+    <script src="create.js"></script>
+</body>
+
+</html>
