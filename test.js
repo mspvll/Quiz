@@ -289,7 +289,7 @@ const quiz_biology = [
             'Китов',
             'Медведей'
         ],
-        currentAnswerId: 1,
+        currentAnswerId: 0,
         user_answer_i: null,
         total_time: 30
     },
@@ -323,7 +323,7 @@ const quiz_biology = [
         answers: [
             'Лёгкие и дыхательные пути',
             'Кожу и дыхательные пути',
-            'Лрудную клетку и лёгкие'
+            'Грудную клетку и лёгкие'
         ],
         currentAnswerId: 0,
         user_answer_i: null,
@@ -404,9 +404,16 @@ let themes = {
     "География": quiz_geogr
 
 }
+
+for(let [key, value] of Object.entries(themes)){
+    localStorage.setItem(key, JSON.stringify(value))
+}
+
 let theme = localStorage.getItem("theme")
 
-let quizData = themes[theme]
+let quizData = JSON.parse(localStorage.getItem(theme))
+// let quizData = themes[theme]
+
 
 let nums_container = document.querySelector(".nums")
 let next = document.querySelector(".next")
@@ -551,6 +558,7 @@ function add_answer(answer,id, task){
 }
 
 function set_user_answer_id(q_id, answ_id){
+    console.log(q_id, answ_id);
     if (quizData[current_item].total_time != -1){
         quizData[q_id].user_answer_i = answ_id; // пустому значению user_answer_i присваивается выбранный ответ
     }
